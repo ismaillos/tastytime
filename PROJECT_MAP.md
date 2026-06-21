@@ -57,6 +57,12 @@ tastytime/
 Multi-tenancy: PostgreSQL schema per tenant (public.tenants → tastytime.*)
 Real-time rooms: order:{id} | kitchen:{tenantId} | dashboard:{tenantId} | driver:{driverId}
 
+## MILESTONES COMPLETED
+- [x] M0: Monorepo scaffolding, DB schema, seed (real Tasty Time menu), packages
+- [x] M1/M2: Auth pages, cart promo + tip, auth-aware Navbar, dashboard pages (orders, menu, reports)
+- [x] M3: Kitchen KDS hardened — 4-column Kanban, live elapsed timer, 15min overdue alert, Web Audio alert beep, thermal ticket print
+- [x] M4: Driver PWA — Socket.IO order assignment, GPS tracking, proof-of-delivery photo capture, login page, PWA manifest
+
 ## ORPHANS & PENDING
 ### Phase 2 (Payments)
 - [ ] CMI Morocco payment integration
@@ -71,16 +77,10 @@ Real-time rooms: order:{id} | kitchen:{tenantId} | dashboard:{tenantId} | driver
 - [ ] WhatsApp marketing broadcasts (Meta template approval required)
 - [ ] SaaS billing / subscription management for multi-tenant
 - [ ] Franchise admin panel (super-admin across tenants)
-### Current Sprint Pending
-- [ ] Dashboard: product/category CRUD UI (API routes exist, UI pending)
-- [ ] Dashboard: reports page with charts (Recharts, API endpoint pending)
-- [ ] Dashboard: staff management / invite system
-- [ ] Customer: auth pages (login, register, Google OAuth UI)
-- [ ] Customer: loyalty points display
-- [ ] Customer: promo code UI in cart
-- [ ] Driver: proof of delivery photo upload
-- [ ] API: inventory routes (/api/inventory)
-- [ ] API: loyalty routes (/api/loyalty)
-- [ ] API: marketing routes (/api/marketing)
-- [ ] API: staff management routes (/api/staff)
-- [ ] E2E tests (Playwright)
+### Next Sprint
+- [ ] M5: Notifications hardening (BullMQ retry, DLQ, push subscription endpoint)
+- [ ] M6: Loyalty & Marketing UI (points widget, birthday gift trigger, referral)
+- [ ] M7: Inventory & Reports (PDF export, stock alerts)
+- [ ] M8: Staff Management UI (invite, RBAC, role switcher)
+- [ ] M9: Multi-Tenant SaaS hardening (onboarding, subdomain, billing)
+- [ ] M10: Production readiness (Playwright E2E, k6 load test, Dockerfile)

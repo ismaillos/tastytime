@@ -4,7 +4,7 @@ import { updateDriverLocationSchema } from '@tastytime/validators'
 import { createTenantDb, createTenantSchema } from '@tastytime/db'
 import { eq } from 'drizzle-orm'
 import { createLogger } from '@tastytime/logger'
-import { getIO } from '../../realtime'
+import { getIO, emitOrderAssignedToDriver } from '../../realtime'
 import type { TenantRecord } from '@tastytime/db'
 
 const log = createLogger({ module: 'driver-route' })
@@ -57,5 +57,40 @@ driverRouter.patch('/location', zValidator('json', updateDriverLocationSchema), 
       .emit('driver:location', { driverId: driver.id, lat, lng })
   }
 
+  return c.json({ success: true })
+})
+
+// POST /driver/assign — assign a ready delivery order to an available driver (internal / admin)
+driverRouter.post('/assign', async (c) => {
+  const tenant = c.get('tenant') as TenantRecord
+  const tables = createTenantSchema(tenant.schema)
+  const db = createTenantDb(tenant.schema)
+  const { orderId, driverId } = await c.req.json<{ orderId: string; driverId: string }>()
+
+  // Mark driver as busy with this order
+  await db
+    .update(tables.drivers)
+    .set({ assignedOrderId: orderId, updatedAt: new Date() })
+    .where(eq(tables.drivers.id, driverId))
+
+  // Fetch order details to send to driver
+  const [order] = await db
+    .select()
+    .from(tables.orders)
+    .where(eq(tables.orders.id, orderId))
+    .limit(1)
+
+  if (!order) return c.json({ success: false, error: 'Order not found' }, 404)
+
+  emitOrderAssignedToDriver(driverId, {
+    id: order.id,
+    customerName: order.customerName,
+    customerPhone: order.customerPhone,
+    address: order.deliveryAddress,
+    total: order.total,
+    items: order.items,
+  })
+
+  log.info({ orderId, driverId }, 'Order assigned to driver')
   return c.json({ success: true })
 })

@@ -21,6 +21,25 @@ export function initSocketIO(httpServer: HttpServer) {
       log.debug({ socketId: socket.id, orderId }, 'Tracking order')
     })
 
+    // Kitchen joins tenant room to receive new order alerts
+    socket.on('kitchen:join', (tenantId: string) => {
+      socket.join(`kitchen:${tenantId}`)
+      log.debug({ socketId: socket.id, tenantId }, 'Kitchen joined')
+    })
+
+    // Dashboard joins tenant room for live stats
+    socket.on('dashboard:join', (tenantId: string) => {
+      socket.join(`dashboard:${tenantId}`)
+      log.debug({ socketId: socket.id, tenantId }, 'Dashboard joined')
+    })
+
+    // Driver joins own room to receive order assignments
+    socket.on('driver:join', (driverId: string) => {
+      socket.join(`driver:${driverId}`)
+      socket.data.driverId = driverId
+      log.debug({ socketId: socket.id, driverId }, 'Driver joined')
+    })
+
     socket.on('driver:update_location', ({ lat, lng }) => {
       const driverId = socket.data.driverId as string | undefined
       if (!driverId) return
@@ -52,4 +71,9 @@ export function emitNewOrder(order: object, tenantId: string) {
   const ioInstance = getIO()
   ioInstance.to(`kitchen:${tenantId}`).emit('order:new', order as never)
   ioInstance.to(`dashboard:${tenantId}`).emit('order:new', order as never)
+}
+
+export function emitOrderAssignedToDriver(driverId: string, order: object) {
+  const ioInstance = getIO()
+  ioInstance.to(`driver:${driverId}`).emit('driver:order_assigned' as never, order as never)
 }
