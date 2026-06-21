@@ -3,7 +3,6 @@ import {
   text,
   timestamp,
   boolean,
-  pgSchema,
 } from 'drizzle-orm/pg-core'
 
 // Public schema — shared across all tenants
