@@ -7,9 +7,13 @@ import { prettyJSON } from 'hono/pretty-json'
 import { createLogger } from '@tastytime/logger'
 import { tenantMiddleware } from './middleware/tenant'
 import { menuRouter } from './routes/menu'
+import { menuAdminRouter } from './routes/menu/admin'
 import { ordersRouter } from './routes/orders'
 import { dashboardRouter } from './routes/dashboard'
 import { driverRouter } from './routes/driver'
+import { loyaltyRouter } from './routes/loyalty'
+import { marketingRouter } from './routes/marketing'
+import { reportsRouter } from './routes/reports'
 import { initSocketIO } from './realtime'
 import { startNotificationWorker } from './workers/notification.worker'
 
@@ -28,9 +32,13 @@ app.use('/api/*', tenantMiddleware)
 
 // Routes
 app.route('/api/menu', menuRouter)
+app.route('/api/admin/menu', menuAdminRouter)
 app.route('/api/orders', ordersRouter)
 app.route('/api/dashboard', dashboardRouter)
 app.route('/api/driver', driverRouter)
+app.route('/api/loyalty', loyaltyRouter)
+app.route('/api/marketing', marketingRouter)
+app.route('/api/reports', reportsRouter)
 
 // Health check — not tenant-scoped
 app.get('/health', (c) => c.json({ status: 'ok', ts: new Date().toISOString() }))
