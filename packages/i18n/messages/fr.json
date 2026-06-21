@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "Tasty Time",
+    "tagline": "Good Food, Good Mood, Great Time!",
+    "address": "Avenue des Saveurs, Quartier Gourmand, Casablanca"
+  },
+  "nav": {
+    "menu": "Menu",
+    "cart": "Panier",
+    "orders": "Commandes",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "logout": "Déconnexion",
+    "profile": "Profil"
+  },
+  "menu": {
+    "title": "Notre Menu",
+    "search": "Rechercher...",
+    "addToCart": "Ajouter au panier",
+    "customize": "Personnaliser",
+    "unavailable": "Indisponible",
+    "prepTime": "{minutes} min",
+    "calories": "{cal} kcal",
+    "allergens": "Allergènes",
+    "ingredients": "Ingrédients"
+  },
+  "categories": {
+    "tacos": "Tacos",
+    "poutines": "Poutines",
+    "sandwiches": "Sandwiches",
+    "burgers": "Burgers",
+    "brunch": "Brunch",
+    "breakfast": "Breakfast",
+    "salades": "Salades",
+    "jus-frais": "Jus Frais",
+    "smoothies": "Smoothies",
+    "cafe": "Café",
+    "desserts": "Desserts",
+    "menu-enfants": "Menu Enfants",
+    "boissons": "Boissons"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide",
+    "quantity": "Quantité",
+    "remove": "Supprimer",
+    "subtotal": "Sous-total",
+    "deliveryFee": "Frais de livraison",
+    "tip": "Pourboire",
+    "tax": "TVA",
+    "total": "Total",
+    "promoCode": "Code promo",
+    "applyPromo": "Appliquer",
+    "checkout": "Commander",
+    "estimatedTime": "Temps estimé"
+  },
+  "checkout": {
+    "title": "Finaliser la commande",
+    "orderType": "Type de commande",
+    "delivery": "Livraison",
+    "pickup": "À emporter",
+    "eatIn": "Sur place",
+    "name": "Nom complet",
+    "phone": "Téléphone",
+    "address": "Adresse de livraison",
+    "table": "Numéro de table",
+    "notes": "Notes spéciales",
+    "scheduleFor": "Commander pour",
+    "asap": "Dès que possible",
+    "paymentMethod": "Mode de paiement",
+    "cashOnDelivery": "Paiement à la livraison",
+    "cash": "Espèces",
+    "placeOrder": "Passer la commande"
+  },
+  "order": {
+    "received": "Commande reçue",
+    "accepted": "Commande acceptée",
+    "preparing": "En préparation",
+    "ready": "Prête",
+    "out_for_delivery": "En cours de livraison",
+    "delivered": "Livrée",
+    "cancelled": "Annulée",
+    "trackOrder": "Suivre ma commande",
+    "orderNumber": "Commande #{id}",
+    "estimatedTime": "Temps estimé: {minutes} min"
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signUp": "Créer un compte",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom complet",
+    "phone": "Téléphone",
+    "forgotPassword": "Mot de passe oublié?",
+    "continueWithGoogle": "Continuer avec Google",
+    "guestCheckout": "Commander sans compte",
+    "alreadyHaveAccount": "Déjà un compte?",
+    "noAccount": "Pas encore de compte?"
+  },
+  "loyalty": {
+    "points": "{points} points",
+    "myPoints": "Mes points",
+    "earnPoints": "Gagnez des points à chaque commande",
+    "redeem": "Utiliser mes points"
+  },
+  "errors": {
+    "required": "Ce champ est requis",
+    "invalidEmail": "Email invalide",
+    "minLength": "Minimum {min} caractères",
+    "generic": "Une erreur est survenue"
+  }
+}

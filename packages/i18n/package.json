@@ -1,0 +1,11 @@
+{
+  "name": "@tastytime/i18n",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./messages/*": "./messages/*"
+  }
+}
