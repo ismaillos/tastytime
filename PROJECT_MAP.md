@@ -66,6 +66,8 @@ Real-time rooms: order:{id} | kitchen:{tenantId} | dashboard:{tenantId} | driver
 - [x] M6: Loyalty UI — /loyalty page with tier system (Bronze/Silver/Gold/Platinum), progress bar, transaction history
 - [x] M7: Reports export — GET /reports/sales/export CSV download with date range filter
 - [x] M8: Staff Management — /api/staff CRUD, invite by email (with HTML invite email), role update, revoke access; /staff dashboard page with invite form + role switcher
+- [x] M9: Multi-Tenant SaaS hardening — /api/onboarding (create tenant + provision PostgreSQL schema + DDL + admin user), check-slug, PATCH tenant settings; /settings dashboard page; Nginx wildcard subdomain routing with automatic X-Tenant-Slug injection
+- [x] M10: Production readiness — Dockerfile (API + web), docker-compose.prod.yml (Postgres+Redis+API+Web+Nginx), nginx.conf (rate limiting, gzip, security headers, SSL, Socket.IO proxy, tenant subdomain routing), env.ts startup validation (fail-fast with human-readable error), Playwright E2E test suite (menu, checkout, auth, KDS), CI workflow extended with E2E job (Postgres+Redis services, Playwright)
 
 ## ORPHANS & PENDING
 ### Phase 2 (Payments)
@@ -81,6 +83,9 @@ Real-time rooms: order:{id} | kitchen:{tenantId} | dashboard:{tenantId} | driver
 - [ ] WhatsApp marketing broadcasts (Meta template approval required)
 - [ ] SaaS billing / subscription management for multi-tenant
 - [ ] Franchise admin panel (super-admin across tenants)
-### Next Sprint
-- [ ] M9: Multi-Tenant SaaS hardening (onboarding flow, subdomain resolution, billing hooks)
-- [ ] M10: Production readiness (Playwright E2E, k6 load test, Dockerfile, Nginx config)
+### Remaining (Lower Priority)
+- [ ] Payment integration: CMI Morocco, Stripe, Apple Pay / Google Pay
+- [ ] k6 load testing scripts
+- [ ] Apple Login OAuth
+- [ ] SaaS billing / subscription management
+- [ ] Franchise super-admin panel (cross-tenant analytics)

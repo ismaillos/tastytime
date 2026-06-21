@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ChefHat, UtensilsCrossed, BarChart2, Truck, Users } from 'lucide-react'
+import { ChefHat, UtensilsCrossed, BarChart2, Truck, Users, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV_ITEMS = [
@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: '/orders', label: 'Commandes', icon: Truck },
   { href: '/reports', label: 'Rapports', icon: BarChart2 },
   { href: '/staff', label: 'Personnel', icon: Users },
+  { href: '/settings', label: 'Paramètres', icon: Settings },
 ]
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {

@@ -1,3 +1,6 @@
+import { validateEnv } from './env'
+validateEnv()
+
 import { createServer } from 'http'
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
@@ -16,6 +19,7 @@ import { marketingRouter } from './routes/marketing'
 import { reportsRouter } from './routes/reports'
 import { pushRouter } from './routes/push'
 import { staffRouter } from './routes/staff'
+import { onboardingRouter } from './routes/onboarding'
 import { initSocketIO } from './realtime'
 import { startNotificationWorker } from './workers/notification.worker'
 
@@ -43,6 +47,7 @@ app.route('/api/marketing', marketingRouter)
 app.route('/api/reports', reportsRouter)
 app.route('/api/push', pushRouter)
 app.route('/api/staff', staffRouter)
+app.route('/api/onboarding', onboardingRouter)
 
 // Health check — not tenant-scoped
 app.get('/health', (c) => c.json({ status: 'ok', ts: new Date().toISOString() }))
