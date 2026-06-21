@@ -14,6 +14,8 @@ import { driverRouter } from './routes/driver'
 import { loyaltyRouter } from './routes/loyalty'
 import { marketingRouter } from './routes/marketing'
 import { reportsRouter } from './routes/reports'
+import { pushRouter } from './routes/push'
+import { staffRouter } from './routes/staff'
 import { initSocketIO } from './realtime'
 import { startNotificationWorker } from './workers/notification.worker'
 
@@ -39,6 +41,8 @@ app.route('/api/driver', driverRouter)
 app.route('/api/loyalty', loyaltyRouter)
 app.route('/api/marketing', marketingRouter)
 app.route('/api/reports', reportsRouter)
+app.route('/api/push', pushRouter)
+app.route('/api/staff', staffRouter)
 
 // Health check — not tenant-scoped
 app.get('/health', (c) => c.json({ status: 'ok', ts: new Date().toISOString() }))

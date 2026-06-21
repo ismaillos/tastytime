@@ -78,6 +78,49 @@ reportsRouter.get('/sales', async (c) => {
   })
 })
 
+// GET /reports/sales/export?from=&to=&format=csv — export sales data
+reportsRouter.get('/sales/export', async (c) => {
+  const tenant = c.get('tenant') as TenantRecord
+  const tables = createTenantSchema(tenant.schema)
+  const db = createTenantDb(tenant.schema)
+
+  const from = c.req.query('from') ? new Date(c.req.query('from')!) : (() => { const d = new Date(); d.setDate(d.getDate() - 30); return d })()
+  const to = c.req.query('to') ? new Date(c.req.query('to')!) : new Date()
+
+  const orders = await db
+    .select()
+    .from(tables.orders)
+    .where(and(gte(tables.orders.createdAt, from), lte(tables.orders.createdAt, to)))
+    .orderBy(desc(tables.orders.createdAt))
+
+  const header = 'ID,Date,Client,Téléphone,Type,Statut,Sous-total,Frais livraison,Pourboire,Total\r\n'
+  const rows = orders.map((o) => {
+    const date = new Date(o.createdAt).toLocaleString('fr-MA')
+    return [
+      o.id,
+      `"${date}"`,
+      `"${o.customerName}"`,
+      o.customerPhone,
+      o.type,
+      o.status,
+      o.subtotal,
+      o.deliveryFee,
+      o.tip,
+      o.total,
+    ].join(',')
+  }).join('\r\n')
+
+  const csv = header + rows
+  const filename = `tastytime-orders-${from.toISOString().split('T')[0]}-to-${to.toISOString().split('T')[0]}.csv`
+
+  return new Response(csv, {
+    headers: {
+      'Content-Type': 'text/csv; charset=utf-8',
+      'Content-Disposition': `attachment; filename="${filename}"`,
+    },
+  })
+})
+
 // GET /reports/customers — customer report
 reportsRouter.get('/customers', async (c) => {
   const tenant = c.get('tenant') as TenantRecord

@@ -62,6 +62,10 @@ Real-time rooms: order:{id} | kitchen:{tenantId} | dashboard:{tenantId} | driver
 - [x] M1/M2: Auth pages, cart promo + tip, auth-aware Navbar, dashboard pages (orders, menu, reports)
 - [x] M3: Kitchen KDS hardened — 4-column Kanban, live elapsed timer, 15min overdue alert, Web Audio alert beep, thermal ticket print
 - [x] M4: Driver PWA — Socket.IO order assignment, GPS tracking, proof-of-delivery photo capture, login page, PWA manifest
+- [x] M5: Notifications hardening — BullMQ retry (5 attempts, exponential backoff), DLQ, rate limiter, HTML email templates, push subscription endpoint + usePushNotifications hook
+- [x] M6: Loyalty UI — /loyalty page with tier system (Bronze/Silver/Gold/Platinum), progress bar, transaction history
+- [x] M7: Reports export — GET /reports/sales/export CSV download with date range filter
+- [x] M8: Staff Management — /api/staff CRUD, invite by email (with HTML invite email), role update, revoke access; /staff dashboard page with invite form + role switcher
 
 ## ORPHANS & PENDING
 ### Phase 2 (Payments)
@@ -78,9 +82,5 @@ Real-time rooms: order:{id} | kitchen:{tenantId} | dashboard:{tenantId} | driver
 - [ ] SaaS billing / subscription management for multi-tenant
 - [ ] Franchise admin panel (super-admin across tenants)
 ### Next Sprint
-- [ ] M5: Notifications hardening (BullMQ retry, DLQ, push subscription endpoint)
-- [ ] M6: Loyalty & Marketing UI (points widget, birthday gift trigger, referral)
-- [ ] M7: Inventory & Reports (PDF export, stock alerts)
-- [ ] M8: Staff Management UI (invite, RBAC, role switcher)
-- [ ] M9: Multi-Tenant SaaS hardening (onboarding, subdomain, billing)
-- [ ] M10: Production readiness (Playwright E2E, k6 load test, Dockerfile)
+- [ ] M9: Multi-Tenant SaaS hardening (onboarding flow, subdomain resolution, billing hooks)
+- [ ] M10: Production readiness (Playwright E2E, k6 load test, Dockerfile, Nginx config)

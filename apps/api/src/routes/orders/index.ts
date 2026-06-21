@@ -4,7 +4,8 @@ import { checkoutSchema, updateOrderStatusSchema } from '@tastytime/validators'
 import { createTenantDb, createTenantSchema } from '@tastytime/db'
 import { eq, desc } from 'drizzle-orm'
 import { createLogger } from '@tastytime/logger'
-import { notificationQueue } from '../../workers/notification.worker'
+import { notificationQueue, orderConfirmationHtml, orderStatusHtml } from '../../workers/notification.worker'
+import { getTenantSubscriptions } from '../push'
 import { emitNewOrder, emitOrderStatusChanged } from '../../realtime'
 import type { TenantRecord } from '@tastytime/db'
 
@@ -116,13 +117,34 @@ ordersRouter.post('/', zValidator('json', checkoutSchema), async (c) => {
   // Real-time: notify kitchen + dashboard
   emitNewOrder(order, tenant.id)
 
-  // Queue notifications
-  await notificationQueue.add('order_received', {
-    channel: 'email',
-    to: body.customerPhone,
-    subject: `Commande #${order.id.slice(0, 8)} reçue — Tasty Time`,
-    html: `<p>Merci ${body.customerName}! Votre commande a été reçue. Total: ${total} MAD.</p>`,
-  })
+  // Queue notifications — email + push to all tenant subscribers
+  await notificationQueue.addBulk([
+    {
+      name: 'order_confirmation_email',
+      data: {
+        channel: 'email' as const,
+        to: body.customerPhone.includes('@') ? body.customerPhone : `${body.customerPhone}@sms.tastytime.ma`,
+        subject: `Commande #${order.id.slice(0, 8).toUpperCase()} reçue — Tasty Time`,
+        html: orderConfirmationHtml({
+          customerName: body.customerName,
+          orderId: order.id,
+          items: resolvedItems as Array<{ productName: string; quantity: number; unitPrice: number }>,
+          total,
+          type: body.type,
+        }),
+      },
+    },
+    ...getTenantSubscriptions(tenant.id).map((sub) => ({
+      name: 'order_push',
+      data: {
+        channel: 'push' as const,
+        subscription: sub,
+        title: 'Nouvelle commande ! 🛎️',
+        body: `#${order.id.slice(0, 8).toUpperCase()} — ${body.customerName} — ${total.toFixed(0)} MAD`,
+        url: `/orders/${order.id}`,
+      },
+    })),
+  ])
 
   return c.json({ success: true, data: order }, 201)
 })
@@ -164,13 +186,16 @@ ordersRouter.patch('/:id/status', zValidator('json', updateOrderStatusSchema), a
   log.info({ orderId: id, status }, 'Order status updated')
   emitOrderStatusChanged(id, status, tenant.id)
 
-  // Queue customer notification
-  await notificationQueue.add('order_status', {
-    channel: 'email',
-    to: updated.customerPhone,
-    subject: `Mise à jour commande #${id.slice(0, 8)}`,
-    html: `<p>Votre commande est maintenant: <strong>${status}</strong></p>`,
-  })
+  // Queue customer status notification via email
+  const statusesToNotify = ['accepted', 'preparing', 'ready', 'out_for_delivery', 'delivered', 'cancelled']
+  if (statusesToNotify.includes(status)) {
+    await notificationQueue.add('order_status_email', {
+      channel: 'email' as const,
+      to: updated.customerPhone.includes('@') ? updated.customerPhone : `${updated.customerPhone}@sms.tastytime.ma`,
+      subject: `Commande #${id.slice(0, 8).toUpperCase()} — mise à jour`,
+      html: orderStatusHtml({ customerName: updated.customerName, orderId: id, status }),
+    })
+  }
 
   return c.json({ success: true, data: updated })
 })
