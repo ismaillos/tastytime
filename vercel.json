@@ -1,0 +1,6 @@
+{
+  "buildCommand": "turbo run build --filter=@tastytime/api...",
+  "ignoreCommand": "turbo-ignore @tastytime/api",
+  "framework": null,
+  "installCommand": "pnpm install --frozen-lockfile"
+}

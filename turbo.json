@@ -3,27 +3,42 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        "build/**",
+        ".turbo/**"
+      ],
+      "inputs": [
+        "src/**",
+        "tsconfig*.json",
+        "package.json",
+        "next.config.*",
+        "tailwind.config.*",
+        "postcss.config.*"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "inputs": ["src/**", "tsconfig*.json", "package.json"]
+    },
+    "lint": {
+      "outputs": [],
+      "inputs": ["src/**", "*.config.*", "package.json"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "typecheck": {
-      "dependsOn": ["^build"]
-    },
-    "lint": {},
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "inputs": ["src/**", "test/**", "*.test.*", "*.spec.*"]
     },
-    "db:generate": {
-      "cache": false
-    },
-    "db:migrate": {
-      "cache": false
-    },
-    "db:seed": {
-      "cache": false
-    }
+    "db:generate": { "cache": false },
+    "db:migrate": { "cache": false },
+    "db:seed": { "cache": false }
   }
 }
