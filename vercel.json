@@ -1,0 +1,13 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "pnpm install --frozen-lockfile && pnpm build",
+  "installCommand": "echo 'install handled by buildCommand'",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_API_URL": "",
+    "NEXT_PUBLIC_TENANT_SLUG": "tastytime",
+    "DATABASE_URL": "",
+    "REDIS_URL": "",
+    "ALLOWED_ORIGINS": ""
+  }
+}

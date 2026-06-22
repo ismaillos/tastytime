@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "Tasty Time",
+    "tagline": "Good Food, Good Mood, Great Time!",
+    "address": "Avenue des Saveurs, Quartier Gourmand, Casablanca"
+  },
+  "nav": {
+    "menu": "Menu",
+    "cart": "Cart",
+    "orders": "Orders",
+    "login": "Sign In",
+    "register": "Sign Up",
+    "logout": "Sign Out",
+    "profile": "Profile"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "search": "Search...",
+    "addToCart": "Add to cart",
+    "customize": "Customize",
+    "unavailable": "Unavailable",
+    "prepTime": "{minutes} min",
+    "calories": "{cal} kcal",
+    "allergens": "Allergens",
+    "ingredients": "Ingredients"
+  },
+  "categories": {
+    "tacos": "Tacos",
+    "poutines": "Poutines",
+    "sandwiches": "Sandwiches",
+    "burgers": "Burgers",
+    "brunch": "Brunch",
+    "breakfast": "Breakfast",
+    "salades": "Salads",
+    "jus-frais": "Fresh Juices",
+    "smoothies": "Smoothies",
+    "cafe": "Coffee",
+    "desserts": "Desserts",
+    "menu-enfants": "Kids Menu",
+    "boissons": "Drinks"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "deliveryFee": "Delivery fee",
+    "tip": "Tip",
+    "tax": "Tax",
+    "total": "Total",
+    "promoCode": "Promo code",
+    "applyPromo": "Apply",
+    "checkout": "Checkout",
+    "estimatedTime": "Estimated time"
+  },
+  "checkout": {
+    "title": "Complete your order",
+    "orderType": "Order type",
+    "delivery": "Delivery",
+    "pickup": "Pickup",
+    "eatIn": "Eat in",
+    "name": "Full name",
+    "phone": "Phone",
+    "address": "Delivery address",
+    "table": "Table number",
+    "notes": "Special notes",
+    "scheduleFor": "Order for",
+    "asap": "As soon as possible",
+    "paymentMethod": "Payment method",
+    "cashOnDelivery": "Pay on delivery",
+    "cash": "Cash",
+    "placeOrder": "Place order"
+  },
+  "order": {
+    "received": "Order received",
+    "accepted": "Order accepted",
+    "preparing": "Preparing",
+    "ready": "Ready",
+    "out_for_delivery": "Out for delivery",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "trackOrder": "Track my order",
+    "orderNumber": "Order #{id}",
+    "estimatedTime": "Estimated time: {minutes} min"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full name",
+    "phone": "Phone",
+    "forgotPassword": "Forgot password?",
+    "continueWithGoogle": "Continue with Google",
+    "guestCheckout": "Order as guest",
+    "alreadyHaveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?"
+  },
+  "loyalty": {
+    "points": "{points} points",
+    "myPoints": "My points",
+    "earnPoints": "Earn points with every order",
+    "redeem": "Redeem points"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email",
+    "minLength": "Minimum {min} characters",
+    "generic": "Something went wrong"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "تيستي تايم",
+    "tagline": "أكل جيد، مزاج جيد، وقت رائع!",
+    "address": "شارع النكهات، الحي الذواقة، الدار البيضاء"
+  },
+  "nav": {
+    "menu": "القائمة",
+    "cart": "السلة",
+    "orders": "الطلبات",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي"
+  },
+  "menu": {
+    "title": "قائمتنا",
+    "search": "بحث...",
+    "addToCart": "أضف إلى السلة",
+    "customize": "تخصيص",
+    "unavailable": "غير متاح",
+    "prepTime": "{minutes} دقيقة",
+    "calories": "{cal} سعرة",
+    "allergens": "مسببات الحساسية",
+    "ingredients": "المكونات"
+  },
+  "categories": {
+    "tacos": "تاكوس",
+    "poutines": "بوتين",
+    "sandwiches": "ساندويشات",
+    "burgers": "برغر",
+    "brunch": "برانش",
+    "breakfast": "فطور",
+    "salades": "سلطات",
+    "jus-frais": "عصائر طازجة",
+    "smoothies": "سموثي",
+    "cafe": "قهوة",
+    "desserts": "حلويات",
+    "menu-enfants": "قائمة الأطفال",
+    "boissons": "مشروبات"
+  },
+  "cart": {
+    "title": "سلتك",
+    "empty": "سلتك فارغة",
+    "quantity": "الكمية",
+    "remove": "حذف",
+    "subtotal": "المجموع الجزئي",
+    "deliveryFee": "رسوم التوصيل",
+    "tip": "إكرامية",
+    "tax": "ضريبة",
+    "total": "المجموع",
+    "promoCode": "كود الخصم",
+    "applyPromo": "تطبيق",
+    "checkout": "إتمام الطلب",
+    "estimatedTime": "الوقت المقدر"
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "orderType": "نوع الطلب",
+    "delivery": "توصيل",
+    "pickup": "استلام",
+    "eatIn": "على الطاولة",
+    "name": "الاسم الكامل",
+    "phone": "الهاتف",
+    "address": "عنوان التوصيل",
+    "table": "رقم الطاولة",
+    "notes": "ملاحظات خاصة",
+    "scheduleFor": "اطلب لـ",
+    "asap": "في أقرب وقت",
+    "paymentMethod": "طريقة الدفع",
+    "cashOnDelivery": "الدفع عند التوصيل",
+    "cash": "نقداً",
+    "placeOrder": "تأكيد الطلب"
+  },
+  "order": {
+    "received": "تم استلام الطلب",
+    "accepted": "تم قبول الطلب",
+    "preparing": "قيد التحضير",
+    "ready": "جاهز",
+    "out_for_delivery": "في الطريق",
+    "delivered": "تم التوصيل",
+    "cancelled": "ملغى",
+    "trackOrder": "تتبع طلبي",
+    "orderNumber": "طلب رقم #{id}",
+    "estimatedTime": "الوقت المقدر: {minutes} دقيقة"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "name": "الاسم الكامل",
+    "phone": "الهاتف",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "continueWithGoogle": "المتابعة مع Google",
+    "guestCheckout": "الطلب كضيف",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "noAccount": "ليس لديك حساب؟"
+  },
+  "loyalty": {
+    "points": "{points} نقطة",
+    "myPoints": "نقاطي",
+    "earnPoints": "اكسب نقاطاً مع كل طلب",
+    "redeem": "استبدال النقاط"
+  },
+  "errors": {
+    "required": "هذا الحقل مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح",
+    "minLength": "الحد الأدنى {min} أحرف",
+    "generic": "حدث خطأ ما"
+  }
+}
