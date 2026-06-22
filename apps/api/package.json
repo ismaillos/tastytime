@@ -17,7 +17,7 @@
     "@tastytime/validators": "workspace:*",
     "better-auth": "^1.2.7",
     "bullmq": "^5.27.0",
-    "hono": "^4.6.3",
+    "hono": "^4.12.26",
     "ioredis": "^5.4.1",
     "resend": "^4.0.0",
     "socket.io": "^4.8.1",
