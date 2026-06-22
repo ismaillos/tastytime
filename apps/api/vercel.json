@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd ../.. && turbo run build --filter=@tastytime/api...",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+  "ignoreCommand": "cd ../.. && npx turbo-ignore @tastytime/api",
+  "framework": null,
+  "outputDirectory": "dist"
+}
