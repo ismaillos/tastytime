@@ -1,7 +1,16 @@
 {
-  "buildCommand": "cd ../.. && turbo run build --filter=@tastytime/api...",
-  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
-  "ignoreCommand": "cd ../.. && npx turbo-ignore @tastytime/api",
+  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter @tastytime/api build",
+  "installCommand": "echo 'install handled by buildCommand'",
+  "outputDirectory": "dist",
   "framework": null,
-  "outputDirectory": "dist"
+  "functions": {
+    "api/index.ts": {
+      "runtime": "nodejs22.x",
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    { "source": "/health", "destination": "/api/index" },
+    { "source": "/api/(.*)", "destination": "/api/index" }
+  ]
 }
