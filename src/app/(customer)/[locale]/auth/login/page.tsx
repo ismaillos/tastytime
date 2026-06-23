@@ -8,7 +8,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 const TENANT = process.env.NEXT_PUBLIC_TENANT_SLUG ?? 'tastytime'
 
 export default function LoginPage() {
