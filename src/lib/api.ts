@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
 const TENANT_SLUG = process.env.NEXT_PUBLIC_TENANT_SLUG ?? 'tastytime'
 
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Plus, Edit2, ToggleLeft, ToggleRight } from 'lucide-react'
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 const TENANT = process.env.NEXT_PUBLIC_TENANT_SLUG ?? 'tastytime'
 
 function apiHeaders() {

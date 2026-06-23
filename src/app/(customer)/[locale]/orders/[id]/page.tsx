@@ -41,7 +41,7 @@ export default function OrderTrackingPage() {
 
   // Subscribe to real-time updates
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000', {
+    const socket = io(process.env.NEXT_PUBLIC_API_URL ?? '', {
       transports: ['websocket'],
     })
 

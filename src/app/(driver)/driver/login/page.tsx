@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 const TENANT = process.env.NEXT_PUBLIC_TENANT_SLUG ?? 'tastytime'
 
 export default function DriverLogin() {

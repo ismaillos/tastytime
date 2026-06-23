@@ -5,7 +5,7 @@ import { io } from 'socket.io-client'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, Check, X, Printer, AlertTriangle } from 'lucide-react'
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 const TENANT = process.env.NEXT_PUBLIC_TENANT_SLUG ?? 'tastytime'
 const ALERT_THRESHOLD_MS = 15 * 60 * 1000 // 15 minutes
 
