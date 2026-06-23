@@ -1,14 +1,8 @@
-import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import { rtlLocales } from '@tastytime/i18n'
 import { QueryProvider } from '@/components/providers/QueryProvider'
-
-export const metadata: Metadata = {
-  title: 'Tasty Time — Good Food, Good Mood, Great Time!',
-  description: 'Burgers, Tacos, Poutines, Brunch & more. Casablanca, Maroc.',
-  icons: { icon: '/favicon.ico' },
-}
+import { HtmlAttributes } from '@/components/providers/HtmlAttributes'
+import { rtlLocales } from '@tastytime/i18n'
 
 export default async function LocaleLayout({
   children,
@@ -22,14 +16,13 @@ export default async function LocaleLayout({
   const dir = rtlLocales.includes(locale as 'ar') ? 'rtl' : 'ltr'
 
   return (
-    <html lang={locale} dir={dir}>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <QueryProvider>
-            {children}
-          </QueryProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <HtmlAttributes lang={locale} dir={dir} />
+      <NextIntlClientProvider messages={messages}>
+        <QueryProvider>
+          {children}
+        </QueryProvider>
+      </NextIntlClientProvider>
+    </>
   )
 }

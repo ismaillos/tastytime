@@ -23,7 +23,13 @@ const log = createLogger({ module: 'api' })
 const app = new Hono().basePath('/api')
 
 app.use('*', cors({
-  origin: process.env.ALLOWED_ORIGINS?.split(',') ?? ['http://localhost:3000'],
+  origin: (origin) => {
+    if (!origin) return origin
+    const allowed = process.env.ALLOWED_ORIGINS?.split(',') ?? []
+    if (allowed.includes(origin)) return origin
+    if (origin.includes('localhost') || origin.endsWith('.vercel.app')) return origin
+    return null
+  },
   credentials: true,
 }))
 app.use('*', prettyJSON())

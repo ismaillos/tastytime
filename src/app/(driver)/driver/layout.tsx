@@ -15,9 +15,5 @@ export const viewport: Viewport = {
 }
 
 export default function DriverLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="fr">
-      <body className="bg-neutral-950 text-white">{children}</body>
-    </html>
-  )
+  return <>{children}</>
 }
