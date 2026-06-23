@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { createRouter, type HonoEnv } from '@/lib/api/types'
 import { createTenantDb } from '@tastytime/db'
 import { createTenantSchema } from '@tastytime/db'
-import { eq, asc } from 'drizzle-orm'
+import { eq, asc, and } from 'drizzle-orm'
 import { createLogger } from '@tastytime/logger'
 import type { TenantRecord } from '@tastytime/db'
 
@@ -35,7 +35,11 @@ menuRouter.get('/products', async (c) => {
   const rows = await db
     .select()
     .from(tables.products)
-    .where(categoryId ? eq(tables.products.categoryId, categoryId) : undefined)
+    .where(
+      categoryId
+        ? and(eq(tables.products.categoryId, categoryId), eq(tables.products.isAvailable, true))
+        : eq(tables.products.isAvailable, true),
+    )
     .orderBy(asc(tables.products.sortOrder))
 
   return c.json({ success: true, data: rows })

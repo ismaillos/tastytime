@@ -43,6 +43,8 @@ export function getDlq() {
 // Backwards-compat export used by routes (lazy, won't connect until first use)
 export const notificationQueue = {
   add: (...args: Parameters<Queue['add']>) => getNotificationQueue().add(...args),
+  addBulk: (...args: Parameters<Queue['addBulk']>) => getNotificationQueue().addBulk(...args),
+  getJob: (...args: Parameters<Queue['getJob']>) => getNotificationQueue().getJob(...args),
 } as unknown as Queue
 
 export type NotificationJob =
